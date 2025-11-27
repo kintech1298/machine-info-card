@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>機台資訊中心</title>
+  
+  <style>
+    /* 全局樣式 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* 標頭橫幅樣式 */
+    .header-banner {
+      background-color: #555555;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 0;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    /* 資訊卡容器樣式 */
+    .info-card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 資訊項目：使用 Flexbox 實現懸掛縮排 */
+    .info-item {
+      display: flex; /* 啟用 Flexbox */
+      margin-bottom: 15px;
+      font-size: 17px;
+      text-align: left;
+      line-height: 1.6; /* 增加行高，提升換行閱讀性 */
+    }
+    .info-item b {
+      flex-shrink: 0; /* 保持標籤固定寬度 */
+      width: 120px; 
+      color: #555;
+      font-weight: 600;
+    }
+    .info-value {
+      flex-grow: 1; /* 讓值佔滿剩餘空間，實現換行對齊 */
+      text-align: left;
+    }
+
+    /* 按鈕樣式 */
+    .report-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .report-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">機台資訊中心</div>
+  <div style="padding-top: 80px;"></div> 
+
+<script>
+  // 1. 取得 URL 參數的函數
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || '資料遺失';
+  }
+
+  // 2. 獲取四個機台資料點 (c, m, s, d)
+  const company = getQueryParam('c'); 
+  const model = getQueryParam('m');
+  const serial = getQueryParam('s');
+  const installDate = getQueryParam('d');
+
+  // 3. Google Forms 基礎網址與 ID 
+  // ⚠️ 替換成您最新、最正確的報修表單-1網址
+  const formBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLScyHZuAsbz2h-VRwn4w1uKdGcE3lcfmV_FbUEza2jEFuxulmw/viewform"; 
+
+  const formLink = formBaseUrl + 
+    "?usp=pp_url" + 
+    "&entry.584113731=" + encodeURIComponent(company) +       
+    "&entry.555954464=" + encodeURIComponent(model) +         
+    "&entry.668395897=" + encodeURIComponent(serial) +        
+    "&entry.1734064506=" + encodeURIComponent(installDate);     
+
+
+  // 4. 動態顯示資料
+  document.write(`
+    <div class="info-card">
+      <h2>✅ 機台基本資料</h2>
+      <div class="info-item"><b>公司名稱:</b> <span class="info-value">${company}</span></div>
+      <div class="info-item"><b>機台型號:</b> <span class="info-value">${model}</span></div>
+      <div class="info-item"><b>Serial NO.:</b> <span class="info-value">${serial}</span></div>
+      <div class="info-item"><b>安裝日期:</b> <span class="info-value">${installDate}</span></div>
+      
+      <a href="${formLink}" class="report-button">點選進入報修表單</a>
+    </div>
+  `);
+</script>
+
+</body>
+</html>
