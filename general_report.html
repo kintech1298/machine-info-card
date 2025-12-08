@@ -13,9 +13,31 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            padding: 20px;
             background-color: #f7f7f7;
             text-align: center;
         }
+
+        /* 內容容器，用於添加背景和陰影 */
+        .content-wrapper {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+        
+        /* 新增的公司名稱樣式 */
+        .company-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #007bff; /* 藍色或公司主色 */
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        
+        /* 主要按鈕樣式 */
         .main-button {
             display: block;
             background-color: #dc3545; /* 醒目的紅色 */
@@ -27,21 +49,69 @@
             font-weight: bold;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
+            margin-top: 30px;
         }
         .main-button:hover {
             background-color: #c82333;
         }
+
+        /* 聯繫資訊卡樣式 */
+        .contact-info-card {
+            background-color: #e0f7fa; /* 淺藍色背景 */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            max-width: 450px;
+            width: 100%;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .contact-info-card h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .contact-item {
+            display: flex;
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .contact-item b {
+            flex-shrink: 0;
+            width: 90px; 
+            color: #555;
+            font-weight: 600;
+        }
+        .contact-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <h1>🛠️ 設備維修、保養、新機評估入口</h1>
-    <p>請點擊下方按鈕填寫表單。</p>
-    <a 
-        href="https://docs.google.com/forms/d/e/1FAIpQLScyHZuAsbz2h-VRwn4w1uKdGcE3lcfmV_FbUEza2jEFuxulmw/viewform" 
-        class="main-button"
-        target="_blank"
-    >
-        點擊開始填寫表單
-    </a>
+    <div class="content-wrapper">
+        <div class="company-name">金達科技股份有限公司</div>
+        <h1>🛠️ 設備維修、年度保養、新機評估入口</h1>
+        <p>請點擊下方按鈕填寫報修表單。</p>
+        
+        <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSc60kRhohIM2RcqHjnlTEXW61pnlRWSDHrflZ1U1aOC712J1A/viewform" 
+            class="main-button"
+            target="_blank"
+        >
+            點擊開始填寫表單
+        </a>
+    </div>
+
+    <div class="contact-info-card">
+        <h2>📞 聯繫我們</h2>
+        <div class="contact-item"><b>服務專線:</b> <span class="contact-value"><a href="tel:+886-2-XXXX-XXXX">+886-2-XXXX-XXXX</a></span></div>
+        <div class="contact-item"><b>電子信箱:</b> <span class="contact-value"><a href="mailto:service@yourcompany.com">service@yourcompany.com</a></span></div>
+        <div class="contact-item"><b>服務時間:</b> <span class="contact-value">週一至週五 9:00 - 18:00</span></div>
+    </div>
 </body>
 </html>
